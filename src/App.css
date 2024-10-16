@@ -1,38 +1,123 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+body {
+    font-family: Arial, sans-serif;
   }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+  
+  .app-container {
+    width: 90%;
+    margin: 0 auto;
+    padding: 20px;
   }
-  to {
-    transform: rotate(360deg);
+  
+  .header {
+    text-align: center;
+    background-color: #337ab7;
+    padding: 20px;
+    color: white;
+    margin-bottom: 20px;
   }
-}
+  
+  .city-input-form {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  
+  .city-input {
+    padding: 10px;
+    width: 300px;
+    font-size: 16px;
+    margin-right: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  .submit-btn {
+    padding: 10px;
+    background-color: #337ab7;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .submit-btn:hover {
+    background-color: #286090;
+  }
+  
+  .content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  
+  .left-section {
+    width: 60%;
+  }
+  
+  .right-section {
+    width: 35%;
+  }
+  
+  .section {
+    background-color: #f9f9f9;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .weather-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  
+  .weather-info, .weather-forecast {
+    width: 48%; /* 将天气情况和天气预报并排显示 */
+  }
+  
+  .right-section img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .map-container {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 1 / 1; /* 保持正方形 */
+    background-color: #e9ecef;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* 日期样式 - 加粗并增加字体大小 */
+  .forecast-date {
+    font-weight: bold;
+    font-size: 1.2em;
+    color: #337ab7; /* 使用不同的颜色 */
+    margin-bottom: 5px;
+  }
+  
+  .news-section {
+    margin-top: 20px;
+  }
+  
+  .news-section h2 {
+    margin-bottom: 10px;
+  }
+  
+  .news-section ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .news-section li {
+    margin-bottom: 20px;
+  }
+  
+  .news-section img {
+    margin-top: 10px;
+    display: block;
+  }
