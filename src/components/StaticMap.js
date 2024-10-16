@@ -1,7 +1,10 @@
 import React from 'react';
 
+// 引用 API 密钥
+const amapKey = process.env.REACT_APP_AMAP_API_KEY;
+
 const StaticMap = ({ center }) => {
-  const mapUrl = `https://restapi.amap.com/v3/staticmap?location=${center.lng},${center.lat}&zoom=10&size=400*300&key=f1995c0eece64ff8065cd2df54cfe3af`;
+  const mapUrl = `https://restapi.amap.com/v3/staticmap?location=${center.lng},${center.lat}&zoom=10&size=400*300&key=${amapKey}`;
 
   return (
     <div id="mapContainer">

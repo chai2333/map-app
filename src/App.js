@@ -14,6 +14,11 @@ const App = () => {
   const [error, setError] = useState(null);
   const [center, setCenter] = useState({ lng: 116.41, lat: 39.92 }); // 设置默认中心点为北京
 
+  // 引用 API 密钥
+  const amapKey = process.env.REACT_APP_AMAP_API_KEY;
+  const aqiKey = process.env.REACT_APP_AQI_API_KEY;
+  const newsKey = process.env.REACT_APP_NEWS_API_KEY;
+
   const handleCityChange = (newCity) => {
     setCity(newCity);
     setError(null);
@@ -30,7 +35,7 @@ const App = () => {
       const fetchCenterData = async () => {
         try {
           const response = await axios.get(
-            `https://restapi.amap.com/v3/geocode/geo?address=${city}&key=f1995c0eece64ff8065cd2df54cfe3af`
+            `https://restapi.amap.com/v3/geocode/geo?address=${city}&key=${amapKey}`
           );
           const location = response.data.geocodes[0].location.split(',');
           setCenter({ lng: parseFloat(location[0]), lat: parseFloat(location[1]) });
@@ -63,12 +68,12 @@ const App = () => {
       const fetchWeatherData = async () => {
         try {
           const weatherResponse = await axios.get(
-            `https://restapi.amap.com/v3/weather/weatherInfo?city=${city}&key=f1995c0eece64ff8065cd2df54cfe3af&extensions=base`
+            `https://restapi.amap.com/v3/weather/weatherInfo?city=${city}&key=${amapKey}&extensions=base`
           );
           setWeatherData(weatherResponse.data.lives[0]);
 
           const forecastResponse = await axios.get(
-            `https://restapi.amap.com/v3/weather/weatherInfo?city=${city}&key=f1995c0eece64ff8065cd2df54cfe3af&extensions=all`
+            `https://restapi.amap.com/v3/weather/weatherInfo?city=${city}&key=${amapKey}&extensions=all`
           );
           setForecastData(forecastResponse.data.forecasts[0].casts);
         } catch (err) {
@@ -87,7 +92,7 @@ const App = () => {
           const latitude = center.lat;
           const longitude = center.lng;
           const response = await axios.get(
-            `https://devapi.qweather.com/airquality/v1/current/${latitude}/${longitude}?key=4e9294082090488f82e6be7513f26680`
+            `https://devapi.qweather.com/airquality/v1/current/${latitude}/${longitude}?key=${aqiKey}`
           );
           setAqiData(response.data);
         } catch (err) {
@@ -105,7 +110,7 @@ const App = () => {
         try {
           const response = await axios.get('https://apis.tianapi.com/areanews/index', {
             params: {
-              key: '0edd4844c643bd25502cd5d3b8531819', // 替换为你的天行API密钥
+              key: newsKey, 
               areaname: city, // 城市名称传给 areaname
             },
           });
